@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 
 
-
+@Mapper
 public interface DeptMapper {
     int deleteByPrimaryKey(Integer id);
 

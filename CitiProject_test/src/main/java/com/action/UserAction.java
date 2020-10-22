@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 public class UserAction
 {
@@ -22,17 +24,21 @@ public class UserAction
 
 
     @ApiOperation(value = "实现人员信息的添加处理", notes = "就是加人的，多么的简单")
-    @ApiImplicitParams({@ApiImplicitParam(name = "username", value = "用户名字333", required = true, dataType = "string")})
+    @ApiImplicitParams({@ApiImplicitParam(name = "id", value = "用户名字333", required = true, dataType = "int")})
     @RequestMapping(value = "/user/add", method = RequestMethod.POST)
-    public String add(@RequestBody String username)
+    public String add(@RequestBody Integer id)
     {
-        System.out.println("username = 11" + username);
+        System.out.println("ID = " + id);
 
-        Dept dept =  deptService.getDept(1);
+        //用Mapper取数据
+        Dept dept =  deptService.getDept(id);
 		System.out.println( dept.getDeptCode()+"------------>"+dept.getDeptName()  );
 
+        //用DAO取数据
+        List<Dept> list =  deptService.findAll();
+        System.out.println( "Dept.size ------------>"+list.size()  );
 
-        return username;
+        return dept.toString();
     }
 
 

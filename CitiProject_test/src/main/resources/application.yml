@@ -7,7 +7,7 @@ server:
 
 
 mybatis:
-  config-location: classpath:mybatis.cfg.xml # mybatis配置文件所在路径
+  config-location: classpath:mybatis/mybatis.cfg.xml # mybatis配置文件所在路径
   type-aliases-package: com.pojo                    # 定义VO包
   mapper-locations:                                      # 所有的mapper映射文件
     - classpath:mybatis/mapper/*.xml
@@ -16,9 +16,9 @@ mybatis:
 
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/test_DB?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://localhost:3306/test2?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai
     username: root
-    password: 123456
+    password: password_1
     driver-class-name: com.mysql.jdbc.Driver
     dbcp2:                                             # 进行数据库连接池的配置
       min-idle: 5                                      # 数据库连接池的最小维持连接数
