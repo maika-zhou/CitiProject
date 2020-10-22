@@ -1,5 +1,8 @@
 package com.action;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.pojo.Dept;
 import com.service.DeptService;
 import io.swagger.annotations.ApiImplicitParam;
@@ -24,9 +27,9 @@ public class UserAction
 
 
     @ApiOperation(value = "实现人员信息的添加处理", notes = "就是加人的，多么的简单")
-    @ApiImplicitParams({@ApiImplicitParam(name = "id", value = "用户名字333", required = true, dataType = "int")})
+    @ApiImplicitParams({@ApiImplicitParam(name = "id", value = "ID", required = true, dataType = "int")})
     @RequestMapping(value = "/user/add", method = RequestMethod.POST)
-    public String add(@RequestBody Integer id)
+    public List<Dept> add(@RequestBody Integer id)
     {
         System.out.println("ID = " + id);
 
@@ -38,7 +41,27 @@ public class UserAction
         List<Dept> list =  deptService.findAll();
         System.out.println( "Dept.size ------------>"+list.size()  );
 
-        return dept.toString();
+        /**
+         *  JSON -> Obj 转换， 参考 https://www.cnblogs.com/ibigboy/p/11124524.html
+         *
+         */
+        //Obj -> JSON String
+        String json =  JSON.toJSONString(list);
+        //JSON String -> Obj
+        List<Dept> list2 = JSON.parseObject(json,List.class);
+        //Obj -> JSONObject  只有是单个VO类才可以转
+        JSONObject jsonObject = (JSONObject) JSONObject.toJSON(dept);
+        //Obj -> JSONObject  如果是List，必须要先转必须要先转JSONString, 随后再JSONArray
+        String arrayStr =  JSON.toJSONString(list);
+        JSONArray array = JSON.parseArray(arrayStr);
+        for (Object d : array)
+        {
+            JSONObject obj = JSON.parseObject(d.toString());
+            System.out.println("obj = " + obj.get("deptCode"));
+        }
+
+        System.out.println("json = " + json);
+        return list2;
     }
 
 
