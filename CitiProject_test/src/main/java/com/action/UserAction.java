@@ -49,6 +49,7 @@ public class UserAction
         String json =  JSON.toJSONString(list);
         //JSON String -> Obj
         List<Dept> list2 = JSON.parseObject(json,List.class);
+
         //Obj -> JSONObject  只有是单个VO类才可以转
         JSONObject jsonObject = (JSONObject) JSONObject.toJSON(dept);
         //Obj -> JSONObject  如果是List，必须要先转必须要先转JSONString, 随后再JSONArray

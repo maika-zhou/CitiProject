@@ -9,6 +9,7 @@
     <modules>
         <module>CitiProject_test</module>
         <module>CitiProject_discovery</module>
+        <module>CitiProject_batch</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -16,7 +17,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <junit.version>4.12</junit.version>
-        <springboot.version>2.3.1.RELEASE</springboot.version>
+        <springboot.version>2.2.5.RELEASE</springboot.version>
         <spring-cloud.version>Hoxton.SR6</spring-cloud.version>
         <jdk.version>1.8</jdk.version>
     </properties>
@@ -24,7 +25,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.3.1.RELEASE</version>
+        <version>2.2.5.RELEASE</version>
     </parent>
 
     <dependencyManagement>
@@ -33,6 +34,9 @@
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter</artifactId>
+                <version>${springboot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
             <!-- spring cloud -->
             <dependency>
@@ -42,6 +46,7 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+
             <!-- Swagger        -->
             <dependency>
                 <groupId>io.springfox</groupId>
