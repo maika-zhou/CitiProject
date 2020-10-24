@@ -1,0 +1,11 @@
+server:
+  port: 1001
+
+eureka:
+  client: # 客户端进行Eureka注册的配置，地址就是客户端地址
+    service-url:
+      defaultZone: http://localhost:1111/CitiProjectDiscovery/eureka
+
+spring:       # 为此微服务起个名字
+  application:
+    name: CitiProjectProvider

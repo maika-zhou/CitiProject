@@ -10,6 +10,8 @@
         <module>CitiProject_test</module>
         <module>CitiProject_discovery</module>
         <module>CitiProject_batch</module>
+        <module>CitiProject_provider</module>
+        <module>CitiProject_providerCall</module>
     </modules>
     <packaging>pom</packaging>
 
