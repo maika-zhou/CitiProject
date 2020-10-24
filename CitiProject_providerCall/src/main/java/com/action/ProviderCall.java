@@ -21,7 +21,12 @@ public class ProviderCall
         String str = citiProjectProviderServiceClient.getDept();
         System.out.println( "--------> "+ str);
 
-        System.out.println( 1/0 );
+        //抛出一下exception，会执行fallback
+        //System.out.println( 1/0 );
+//        if (vo == null) {	// 数据不存在，假设让它抛出个错误
+//            throw new RuntimeException("部门信息不存在！") ;
+//        }
+
 
         return str;
     }
