@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.TxNoDAO">
+
+	<resultMap id="BaseResultMap" type="com.pojo.TxNo" >
+		<id column="tx_no" property="txNo" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List" >
+		tx_no
+	</sql>
+
+
+
+	<select id="findByTxNo" resultMap="BaseResultMap" parameterType="java.lang.String" >
+		select
+			*
+		from tx_no
+		where tx_no = #{txno,jdbcType=VARCHAR}
+	</select>
+
+	<insert id="insert" parameterType="com.pojo.TxNo" >
+		insert into tx_no (tx_no)
+		values ( #{txNo,jdbcType=VARCHAR} )
+
+
+
+  	</insert>
+
+
+
+
+</mapper>
