@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:int="http://www.springframework.org/schema/integration"
+       xmlns:int-http="http://www.springframework.org/schema/integration/http"
+       xsi:schemaLocation="
+    http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/integration
+    http://www.springframework.org/schema/integration/spring-integration.xsd
+    http://www.springframework.org/schema/integration/http
+    http://www.springframework.org/schema/integration/http/spring-integration-http.xsd">
+
+    <int:channel id="get_send_channel" />
+
+    <int:channel id="get_receive_channel">
+        <int:queue capacity='10' />
+    </int:channel>
+
+<!--    http://47.103.200.55:8080/commoditymanagement/commodity     -->
+
+    <int-http:outbound-gateway id="get.outbound.gateway"
+                               request-channel="get_send_channel" url="http://47.103.200.55:8080/commoditymanagement/commodity/{id}"
+                               http-method="GET" reply-channel="get_receive_channel"
+                               expected-response-type="java.lang.String">
+        <int-http:uri-variable name="id" expression="1002"/>
+    </int-http:outbound-gateway>
+</beans>

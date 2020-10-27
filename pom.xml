@@ -15,6 +15,14 @@
         <module>CitiProject_RocketMQDemo</module>
         <module>CitiProject_webMQProducer</module>
         <module>CitiProject_webMQConsumer</module>
+        <module>A-Producer</module>
+        <module>A-Consumer</module>
+        <module>A-Integration1</module>
+        <module>A-Integration-Producer</module>
+        <module>A-Integration-Consumer</module>
+        <module>A-sender</module>
+        <module>A-receiver</module>
+        <module>A-http</module>
     </modules>
     <packaging>pom</packaging>
 

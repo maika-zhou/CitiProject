@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.AcctDAO">
+
+	<resultMap id="BaseResultMap" type="com.pojo.Acct" >
+		<id column="id" property="id" jdbcType="BIGINT" />
+		<result column="card_number" property="cardNumber" jdbcType="VARCHAR" />
+		<result column="balance" property="balance" jdbcType="BIGINT" />
+	</resultMap>
+	<sql id="Base_Column_List" >
+		id, card_number,balance
+	</sql>
+
+    <select id="findAll" resultType="Acct">
+		SELECT * FROM acct;
+	</select>
+
+	<select id="findById" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+		select
+		<include refid="Base_Column_List" />
+		from acct
+		where id = #{id,jdbcType=BIGINT}
+	</select>
+
+	<update id="updateAcct" parameterType="Acct" >
+		update Acct
+		<set >
+			<if test="balance != null" >
+				balance = #{balance,jdbcType=BIGINT},
+			</if>
+		</set>
+		where id = #{id,jdbcType=BIGINT}
+	</update>
+
+
+
+
+
+</mapper>
